@@ -1,1 +1,92 @@
-nothing to look for here
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Radar Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Background Styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FFE4E1; /* Soft pastel pink */
+            font-family: "Comic Sans MS", "Poppins", sans-serif;
+        }
+
+        /* Cute Frame */
+        .chart-container {
+            background: #fff5f8; /* Soft pinkish white */
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(255, 182, 193, 0.5); /* Soft pink glow */
+            border: 4px solid #ffb6c1; /* Cute pink border */
+        }
+
+        /* Canvas Styling */
+        canvas {
+            max-width: 350px;
+        }
+
+        /* Title Styling */
+        h2 {
+            text-align: center;
+            color: #ff69b4; /* Cute pink color */
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chart-container">
+        <h2>✨ My Cute Radar Chart ✨</h2>
+        <canvas id="radarChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('radarChart').getContext('2d');
+
+        const data = {
+            labels: ['Intel', 'Physical', 'Psychic', 'Core', 'Mind'],
+            datasets: [{
+                label: 'My Progress Stats',
+                data: [80, 60, 50, 70, 90], // Adjust values
+                backgroundColor: 'rgba(255, 105, 180, 0.3)', /* Light pink fill */
+                borderColor: 'rgba(255, 20, 147, 0.8)', /* Cute dark pink */
+                borderWidth: 3,
+                pointBackgroundColor: '#ff69b4', /* Hot pink points */
+                pointRadius: 5, /* Bigger dots */
+            }]
+        };
+
+        const config = {
+            type: 'radar',
+            data: data,
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        angleLines: { color: '#ffb6c1' }, /* Soft pink grid */
+                        grid: { color: '#ffcccb' },
+                        ticks: { display: false },
+                        pointLabels: { color: '#ff69b4', font: { size: 14 } }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                },
+                animation: {
+                    duration: 2000, /* Smooth animation */
+                    easing: 'easeOutBounce' /* Bouncy effect */
+                }
+            }
+        };
+
+        new Chart(ctx, config);
+    </script>
+
+</body>
+</html>
